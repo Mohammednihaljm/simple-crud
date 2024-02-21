@@ -1,6 +1,11 @@
 const express = require ('express');
+const connectDB=require("./config/Db")
+
 const app=express()
 const port=3000;
+
+
+connectDB()
 
 
 app.get('/',(req,res)=>{
