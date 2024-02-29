@@ -27,6 +27,16 @@ app.post('/api/produts',async(req,res)=>{
 
 })
 
+app.get('/api/products',async(req,res)=>{
+try {
+    const product=await Product.find({})
+    res.status(200).json(product)
+    
+} catch (error) {
+    res.status(500).json({message:error.message})
+}
+})
+
 
 app.listen(port,()=>{
     console.log(`SERVER RUNNING PORT  ${port}`);
