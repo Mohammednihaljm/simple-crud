@@ -37,6 +37,18 @@ try {
 }
 })
 
+app.get('/api/products/:id',async(req,res)=>{
+
+  try{
+    const {id}=req.params;
+    const product=await Product.findById(id)
+    res.status(200).json(product)
+  }
+  catch(error){
+  res.status(500).json({message:error.message})
+  }
+})
+
 
 app.listen(port,()=>{
     console.log(`SERVER RUNNING PORT  ${port}`);
