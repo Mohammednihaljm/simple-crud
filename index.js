@@ -49,6 +49,23 @@ app.get('/api/products/:id',async(req,res)=>{
   }
 })
 
+app.put('/api/products/:id',async(req,res)=>{
+
+  try {
+
+    const {id}=req.params;
+    const product=await Product.findByIdAndUpdate(id,req.body);
+    if(!product){
+     return res.status(400).json({message:"product not found"})
+    }
+      const updateproduct=await Product.findById(id)
+      res.status(200).json(updateproduct)
+  } catch (error) {
+    res.status(500).json({message:error.message})
+  }
+
+})
+
 
 app.listen(port,()=>{
     console.log(`SERVER RUNNING PORT  ${port}`);
