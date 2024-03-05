@@ -41,7 +41,7 @@ const updateProduct=async(req,res)=>{
         if(!product){
          return res.status(400).json({message:"product not found"})
         }
-          const updateproduct=await product.findById(id)
+          const updateproduct=await Product.findById(id);
           res.status(200).json(updateproduct)
       } catch (error) {
         res.status(500).json({message:error.message})
